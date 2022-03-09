@@ -3,10 +3,10 @@ const express = require("express");
 dotenv.config();
 const { Pool, Client } = require("pg");
 const pool = new Pool({
-  user: process.env.USER,
-  host: process.env.HOST,
-  database: process.env.DATABASE,
-  password: process.env.PASSWORD,
+  user: "ece",
+  host: "database-1.ciivyj7ykn79.us-east-1.rds.amazonaws.com",
+  database: "Medicine_list",
+  password: "Inspiron11",
   port: 5432,
 });
 
@@ -29,9 +29,6 @@ pool.connect((err, client, done) => {
 });
 
 app.get("/medicines", (req, res) => {
-  // res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  // res.header("Access-Control-Allow-Origin", ["*"]);
-  // res.header("Access-Control-Allow-Headers", "Content-Type");
   res.json({
     data: medicines,
   });
