@@ -32,6 +32,7 @@ app.get("/medicines", (req, res) => {
   res.json({
     data: medicines,
   });
+  res.header('Access-Control-Allow-Origin'='*')
 });
 
 app.listen(PORT, () => {
