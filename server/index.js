@@ -1,6 +1,9 @@
 const dotenv = require("dotenv");
-const express = require("express");
 dotenv.config();
+const express = require("express");
+const cors = require("cors");
+const app = express();
+app.use(cors());
 const { Pool, Client } = require("pg");
 const pool = new Pool({
   user: "ece",
@@ -11,7 +14,7 @@ const pool = new Pool({
 });
 
 const PORT = process.env.PORT || 3001;
-const app = express();
+
 var medicines = [];
 pool.connect((err, client, done) => {
   if (err) throw err;
