@@ -29,11 +29,8 @@ pool.connect((err, client, done) => {
 });
 
 app.get("/medicines", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   res.json({
-    statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
     data: medicines,
   });
 });
