@@ -1,17 +1,18 @@
+const dotenv = require("dotenv");
 const express = require("express");
+dotenv.config();
 const { Pool, Client } = require("pg");
 const pool = new Pool({
-  user: "ece",
-  host: "database-1.ciivyj7ykn79.us-east-1.rds.amazonaws.com",
-  database: "Medicine_list",
-  password: "Inspiron11",
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
   port: 5432,
 });
-
+console.log("host", HOST);
 const PORT = process.env.PORT || 3001;
 const app = express();
 var medicines = [];
-
 pool.connect((err, client, done) => {
   if (err) throw err;
   client.query("SELECT * FROM medicines ", (err, res) => {
