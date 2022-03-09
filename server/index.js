@@ -9,7 +9,7 @@ const pool = new Pool({
   password: process.env.PASSWORD,
   port: 5432,
 });
-console.log("host", HOST);
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 var medicines = [];
@@ -30,6 +30,10 @@ pool.connect((err, client, done) => {
 
 app.get("/medicines", (req, res) => {
   res.json({
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
     data: medicines,
   });
 });
