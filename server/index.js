@@ -30,6 +30,7 @@ pool.connect((err, client, done) => {
 
 app.get("/medicines", (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.json({
     data: medicines,
   });
