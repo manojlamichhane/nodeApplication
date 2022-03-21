@@ -37,6 +37,15 @@ app.get("/medicines", (req, res) => {
   });
   res.header("Access-Control-Allow-Origin", "*");
 });
+app.get(`/medicines/:id`, (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  const medicine = medicines.find(
+    (medicine) => medicine.medicine_id === parseInt(req.params.id)
+  );
+  res.json({
+    data: medicine,
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
